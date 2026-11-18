@@ -8,19 +8,38 @@ any other key closes the strip and types normally.
 
 Covers French, Spanish, German, Dutch, Danish, Czech and Māori by default.
 
+## Install
+
+1. Download `LongPress-Setup-<version>.exe` from the
+   [Releases](https://github.com/jmcurran/LongPress/releases) page.
+2. Run it. It installs just for you (no administrator rights needed) into
+   `%LOCALAPPDATA%\Programs\LongPress`. Nothing else needs to be installed: .NET is
+   built in.
+3. Windows SmartScreen may warn you, because the installer isn't code-signed.
+   Click **More info**, then **Run anyway**.
+
+An "é" icon appears in the notification area. Setup can make LongPress start with
+Windows (on by default). You can change this later with **Start with Windows** in the
+icon's menu.
+
+To remove it, use Settings > Apps > Installed apps > LongPress > Uninstall. Your
+settings in `%APPDATA%\LongPress` are kept.
+
 ## Build
 
-Needs the .NET 10 SDK: `winget install Microsoft.DotNet.SDK.10`
+You need the .NET 10 SDK (`winget install Microsoft.DotNet.SDK.10`). To build the
+installer you also need [Inno Setup 7](https://jrsoftware.org/isinfo.php).
 
 ```
-cd LongPress
-dotnet run                      # try it out
-dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o publish
+dotnet run                    # try it out
+dotnet publish -c Release     # self-contained single file: publish\LongPress.exe
+.\build-installer.ps1         # publish + installer: installer\Output\LongPress-Setup-<version>.exe
 ```
 
-The result is `publish\LongPress.exe`. Copy it wherever you like and run it; an "é"
-icon appears in the notification area. Use the icon's menu to turn on
-**Start with Windows**.
+The version comes from `<Version>` in `LongPress.csproj`. `build-installer.ps1` finds
+`ISCC.exe` in the usual Inno Setup 7 locations (per-user or Program Files). If yours is
+somewhere else, run `.\build-installer.ps1 -Iscc <path to ISCC.exe>` or set the `ISCC`
+environment variable.
 
 ## Using it
 
