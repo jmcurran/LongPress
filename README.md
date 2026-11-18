@@ -2,7 +2,7 @@
 
 macOS/Android-style long-press accents for Windows, in any program.
 
-Hold a letter, and a strip of variants appears next to the text cursor. Press **1-9**
+Hold a letter → a strip of variants appears next to the text cursor → press **1–9**
 (or arrows/Tab, then Enter/Space, or click) to replace the letter. **Esc** cancels;
 any other key closes the strip and types normally.
 
@@ -27,8 +27,8 @@ icon appears in the notification area. Use the icon's menu to turn on
 | Action | Keys |
 |---|---|
 | Open the popup | hold the letter |
-| Pick a variant | 1-9 (top row or numpad), or click it |
-| Move the selection | Arrow keys, Tab / Shift+Tab |
+| Pick a variant | 1–9 (top row or numpad), or click it |
+| Move the selection | ← → ↑ ↓, Tab / Shift+Tab |
 | Accept the selection | Enter or Space |
 | Cancel | Esc |
 | Pause / resume | left-click the tray icon |
@@ -37,15 +37,15 @@ Capitals: hold Shift (or have Caps Lock on) while holding the letter.
 
 ## Settings
 
-Tray menu > **Edit settings...** opens
+Tray menu → **Edit settings…** opens
 `%APPDATA%\LongPress\settings.json` in Notepad. After saving, choose **Reload settings**.
 
 - `theme`: `"auto"` (follows Windows light/dark mode), `"light"` or `"dark"`.
 - `holdDelayMs`: how long to hold before the popup appears. The popup can't appear
   before Windows starts repeating the key, so the **Repeat delay** slider in
-  Control Panel > Keyboard matters too.
+  Control Panel → Keyboard matters too.
 - `excludedProcesses`: programs where it's switched off (e.g. `"mstsc"`, games).
-- `accents`: maps each character to its variants, in popup order (max 9; spaces ignored).
+- `accents`: character → variants in popup order (max 9; spaces ignored).
   Capitals are generated automatically.
 
 To get the default file back, delete it and choose **Reload settings**.
