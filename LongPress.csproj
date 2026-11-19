@@ -9,8 +9,15 @@
     <AssemblyName>LongPress</AssemblyName>
     <RootNamespace>LongPress</RootNamespace>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
+    <ApplicationIcon>assets\LongPress.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Tray icons (TrayApp loads them by these names). -->
+    <EmbeddedResource Include="assets\LongPress.ico" LogicalName="LongPress.ico" />
+    <EmbeddedResource Include="assets\LongPress-paused.ico" LogicalName="LongPress-paused.ico" />
+  </ItemGroup>
 
   <!-- Release publishes a self-contained single exe (no .NET runtime needed) into publish\.
        No trimming: WinForms doesn't support it. -->

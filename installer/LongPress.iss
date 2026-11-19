@@ -28,6 +28,7 @@ DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 DisableDirPage=auto
 UninstallDisplayIcon={app}\{#AppExe}
+SetupIconFile=..\assets\LongPress.ico
 UninstallDisplayName={#AppName}
 
 ArchitecturesAllowed=x64compatible

@@ -68,11 +68,11 @@ try {
     $exe = Join-Path $root 'publish\LongPress.exe'
     if (-not (Test-Path -LiteralPath $exe)) { throw "dotnet publish didn't produce $exe." }
 
-    # Retry once or twice: Dropbox or antivirus can briefly lock the freshly published exe.
+    # Retry: Dropbox (or antivirus) often locks the freshly published exe for a few seconds.
     for ($attempt = 1; ; $attempt++) {
         & $isccPath "/DAppVersion=$version" (Join-Path $root 'installer\LongPress.iss')
         if ($LASTEXITCODE -eq 0) { break }
-        if ($attempt -ge 3) { throw "ISCC failed (exit code $LASTEXITCODE)." }
+        if ($attempt -ge 6) { throw "ISCC failed (exit code $LASTEXITCODE)." }
         Write-Warning "ISCC failed (exit code $LASTEXITCODE); retrying in 3 seconds."
         Start-Sleep -Seconds 3
     }

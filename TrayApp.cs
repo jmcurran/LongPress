@@ -1,6 +1,4 @@
 using System.Diagnostics;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using Microsoft.Win32;
 
 namespace LongPress;
@@ -18,8 +16,8 @@ internal sealed class TrayApp : ApplicationContext
     private readonly NotifyIcon _tray;
     private readonly ToolStripMenuItem _enabledItem;
     private readonly ToolStripMenuItem _startupItem;
-    private readonly Icon _onIcon = MakeIcon(Color.FromArgb(0, 120, 215));
-    private readonly Icon _offIcon = MakeIcon(Color.FromArgb(128, 128, 128));
+    private readonly Icon _onIcon = LoadIcon("LongPress.ico");
+    private readonly Icon _offIcon = LoadIcon("LongPress-paused.ico");
 
     public TrayApp()
     {
@@ -114,30 +112,12 @@ internal sealed class TrayApp : ApplicationContext
         _startupItem.Checked = IsStartupEnabled();
     }
 
-    /// <summary>A coloured rounded square with a white "é".</summary>
-    private static Icon MakeIcon(Color color)
+    /// <summary>Loads an embedded .ico at the tray size for the current DPI.</summary>
+    private static Icon LoadIcon(string resourceName)
     {
-        using var bmp = new Bitmap(32, 32);
-        using (var g = Graphics.FromImage(bmp))
-        {
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-            g.Clear(Color.Transparent);
-
-            using var path = new GraphicsPath();
-            const int r = 8;
-            path.AddArc(0, 0, r, r, 180, 90);
-            path.AddArc(31 - r, 0, r, r, 270, 90);
-            path.AddArc(31 - r, 31 - r, r, r, 0, 90);
-            path.AddArc(0, 31 - r, r, r, 90, 90);
-            path.CloseFigure();
-            using (var brush = new SolidBrush(color)) g.FillPath(brush, path);
-
-            using var font = new Font("Segoe UI", 24, FontStyle.Bold, GraphicsUnit.Pixel);
-            using var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-            g.DrawString("é", font, Brushes.White, new RectangleF(0, -2, 32, 32), format);
-        }
-        return Icon.FromHandle(bmp.GetHicon());
+        using var stream = typeof(TrayApp).Assembly.GetManifestResourceStream(resourceName)
+            ?? throw new InvalidOperationException($"Missing embedded resource {resourceName}.");
+        return new Icon(stream, SystemInformation.SmallIconSize);
     }
 
     protected override void ExitThreadCore()

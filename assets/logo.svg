@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<path d="M11 5 h78 a10 10 0 0 1 10 10 v54 a10 10 0 0 1 -10 10 h-31 l-8 10 l-8 -10 h-31 a10 10 0 0 1 -10 -10 v-54 a10 10 0 0 1 10 -10 z" fill="#FFFFFF" stroke="#C9CDD4" stroke-width="2" stroke-linejoin="round"/>
+<rect x="6" y="10" width="27" height="64" rx="6" fill="#E6E8EC"/>
+<rect x="36.5" y="10" width="27" height="64" rx="6" fill="#0078D4"/>
+<rect x="67" y="10" width="27" height="64" rx="6" fill="#E6E8EC"/>
+<text x="19.5" y="54" font-family="Inter" font-weight="700" text-anchor="middle" font-size="32" fill="#16181D">è</text>
+<text x="50" y="54" font-family="Inter" font-weight="700" text-anchor="middle" font-size="32" fill="#FFFFFF">é</text>
+<text x="80.5" y="54" font-family="Inter" font-weight="700" text-anchor="middle" font-size="32" fill="#16181D">ê</text>
+</svg>

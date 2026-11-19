@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo-256.png" alt="LongPress logo" width="128"></p>
+
 # LongPress
 
 macOS/Android-style long-press accents for Windows, in any program.
